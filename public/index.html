@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Conversor de cores</h1>
+    <p>RGB</p> <span id="red"> 255 </span>,<span id="green"> 5 </span>,<span id="blue"> 255 </span><br>
+    <span id="resRGBHEX"></span><br>
+    <p>HEX</p> <span id="hex"> FF05FF </span>
+
+    </html>
+
+<script>
+    
+const r = document.getElementById('red').textContent
+const g = document.getElementById('green').textContent
+const b = document.getElementById('blue').textContent
+
+const rgb = { r,g,b};
+console.log(rgb)
+
+const hex = document.getElementById('hex').textContent
+
+const objectHex = {hex};
+console.log(objectHex)
+
+const rgbToHex = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(rgb)
+};
+const hexToRGB = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(objectHex)
+};
+fetch('/apiRGBtoHEX',rgbToHex).then(res => {
+    document.getElementById('resRGBHEX').textContent = res;
+});
+fetch('/apiHEXtoRGB',hexToRGB);
+//console.log(options.body+'< Valor do body')
+</script>
+
+</body>
+
+
+
+
